@@ -1,0 +1,12 @@
+DIA 3
+
+karma : karma es para lanzar los tests en el navegador que digamos
+
+mocha : estructura, no lo asserts
+
+chai: aserciones
+
+sinon : mocks
+
+
+./node_modules/karma/bin/karma start
