@@ -19,7 +19,6 @@ describe('hi', function () {
                 return "Hi I'm " + name;
         });
 
-        console.log(result);
 
         expect(result).to.be.eql(["Hi I'm Ramiro", "Hi I'm Tere", "Hi I'm Toño"]);
     })

@@ -1,0 +1,561 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0252)https://mail-attachment.googleusercontent.com/attachment/u/1/?ui=2&ik=962786b10a&view=att&th=149bdb70e48e1516&attid=0.1&disp=inline&realattid=f_i2lt1y5y0&safe=1&zw&saduie=AG9B_P8Dy7eH_D3orgNjPubJh3n0&sadet=1416227399196&sads=yh0_QdgZzT60OjsVC9Cxt8_FJHs -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head><body>
+
+
+    
+        
+
+        
+
+        
+        
+
+        
+        
+
+        
+
+        
+        
+
+        
+        
+
+        
+        
+
+        
+    
+
+    <div>
+
+        <div>
+
+            
+            <div>
+                
+                    
+                        <h1>Copiado / Referencia</h1>
+                    
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+var x = 3;
+var y = x;
+
+x = 4;
+console.log(y) // 3
+
+var z = {};
+var w = z;
+
+z.hello = 'Hi!';
+
+console.log(w);// {'hello': 'Hi!'}
+                        </code></pre>
+                    
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+var names = ['Luis', 'Antonio'];
+
+function addItem(items) {
+    items.push('Juan');
+}
+
+addItem(names);
+
+console.log(names);
+//sólo pasa con objetos
+                        </code></pre>
+                    
+                
+
+
+                
+                    
+                        <h1>Loops</h1>
+                    
+                    
+                        <p>while, do-while, for</p>
+                    
+                    
+                        <h2>for-in</h2>
+                        <pre><code style="font-size:18px;margin-top:20px">
+var abc = ['a', 'b', 'c', 'd'];
+
+abc.hola = 'aaaaa'
+
+for (letter in abc) {
+    console.log(letter);
+}
+
+//0
+//1
+//2
+//3
+//hola
+                        </code></pre>
+                        <p>for-in recorre todas las claves de un objeto</p>
+                    
+                
+
+                
+                    <h1>Functions, Scopes &amp; Closures</h1>
+                
+                
+                    
+                        <h2>Hoisting</h2>
+                    <pre><code style="font-size:18px;margin-top:20px">
+test1();
+
+function test1() {
+
+}
+                    </code></pre>
+
+                    <pre><code style="font-size:18px;margin-top:20px">
+test1();
+
+var test1 = function() {
+
+}
+                    </code></pre>
+                    
+                    
+                    <pre><code style="font-size:18px;margin-top:20px">
+function test1() {
+
+}
+test1();
+                    </code></pre>
+
+                    <pre><code style="font-size:18px;margin-top:20px">
+var test1;
+test1();
+
+test1 = function() {
+
+}
+                    </code></pre>
+                    
+                
+
+                
+                    
+                        <h2>Creando funciones</h2>
+                        <pre><code style="font-size:18px;margin-top:20px">
+function add(x, y) {
+    return x + y;
+}
+
+var add = function (x, y) {
+    return x + y;
+};
+
+var add = new Function('x', 'y', 'return x + y');
+                        </code></pre>
+                    
+                
+                
+                    
+                        <h2>IIFE</h2>
+                        <pre><code style="font-size:18px;margin-top:20px">
+function f() {
+    if (condition) {
+        var temp1 = '...'
+    }
+   //temp1 existe aquí
+}
+                        </code></pre>
+                    
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+function f() {
+    if (condition) {
+        (function () {
+            var temp1 = '...'
+        }());
+    }
+   //temp1 no existe
+}
+                        </code></pre>
+                    
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+(function ($, selector) {
+    $(selector).remove();
+}(jQuery, '.hello'));
+                        </code></pre>
+                    
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+var setValue = function () {
+    var prevValue;
+    return function (value) { //clousure
+        if (value !== prevValue) {
+            console.log('Changed: ' + value);
+            prevValue = value;
+        }
+    };
+}();
+                        </code></pre>
+                    
+                
+
+                
+                    
+                    <h2>Closures</h2>
+                    <p>Las funciones permaneces conectadas a su scope de nacimiento</p>
+                    
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+function createInc(startValue) {
+    return function (step) {
+        startValue += step;
+        return startValue;
+    };
+}
+
+var inc = createInc(2);
+inc(1);//3
+inc(5);//8
+                        </code></pre>
+                    
+                
+
+                
+                    <h2>Ejercicio 1</h2>
+
+                    <pre><code style="font-size:18px;margin-top:20px">
+var comparador = comparador('marta');
+
+comparador('luis'); //luis tienes menos letras que marta
+comparador('antonio'); //antonio tiene más letras que marta
+                    </code></pre>
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+function comparador(originalName) {
+   return function (name) {
+       if (name.length &gt; originalName.length) {
+           return name + ' tiene más letras que ' + originalName
+       } else {
+           return name + ' tiene menos letras que ' + originalName
+       }
+   }
+}
+                        </code></pre>
+                    
+                
+
+
+                
+                    <h2>Ejercicio 2</h2>
+
+                    <pre><code style="font-size:18px;margin-top:20px">
+var names = ['name1', 'name2', 'name3'];
+
+var countChar = CountChar(names);
+
+countChar[0](true); //5 characters
+countChar[0](); //5
+                    </code></pre>
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+function CountChar(list) {
+   var str = " characters";
+   var fns = [];
+
+   for(var i = 0; i &lt; list.length; i++) {
+       (function (text) {
+           fns.push(function(<wbr>withCharText) {
+               if (withCharText) {
+                   console.log(text + str);
+               } else {
+                   console.log(text);
+               }
+           });
+       }(list[i]));
+   }
+
+   return fns;
+}
+                        </code></pre>
+                    
+                
+
+                
+                    <h2>Ejercicio 3</h2>
+
+                    <pre><code style="font-size:18px;margin-top:20px">
+var fnAdd = add(3);
+var fnSub = sub(2);
+
+var result = calculator(100, [fnAdd, fnSub]);
+//[103, 98]
+                    </code></pre>
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+var add = function (init) {
+    return function (num) {
+         return init + num;
+    }
+};
+
+var sub = function (init) {
+    return function (num) {
+         return num - init;
+    }
+};
+
+var calculator = function (init, fns) {
+    var result = [];
+    for(var i = 0; i &lt; fns.length; i++) {
+         result.push(fns[i](init));
+    }
+    return result;
+};
+
+var fnAdd = add(3);
+var fnSub = sub(2);
+
+calculator(100, [fnAdd, fnSub]);
+                        </code></pre>
+                    
+                
+
+                
+                    <h2>Ejercicio 4</h2>
+                    <ul>
+                    <li>mismo numero de funciones que de números</li>
+                    <li>hay que usar arguments</li>
+                    <li>hay una clousure dentro de otra</li>
+                    </ul>
+
+                    <pre><code style="font-size:18px;margin-top:20px">
+var calculator = Calculator(0);
+
+var fn = calculator(add, add, sub);
+
+fn(3, 4, 1); //6
+
+                    </code></pre>
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+
+var add = function (a, b) {
+    return a + b;
+};
+
+var sub = function (a, b) {
+    return a - b;
+};
+
+function Calculator(init) {
+   return function () {
+       var operaciones = arguments;
+
+       return function () {
+           var current = init;
+           for(var i = 0; i &lt; arguments.length; i++) {
+               current = operaciones[i](current, arguments[i]);
+           }
+
+           return current;
+       }
+   }
+}
+                        </code></pre>
+                    
+                
+
+                
+                    <h2>Ejercicio extra</h2>
+
+                    <pre><code style="font-size:18px;margin-top:20px">
+var result = map(['Ramiro', Tere', 'Toño'], function(name) {
+    return "Hi I'm " + name;
+});
+
+console.log(result);
+// ["Hi I'm Ramiro", "Hi I'm Tere", "Hi I'm Toño"]
+
+var result = filter(['Ramiro', Tere', 'Toño'], function(name) {
+    return name !== 'Ramiro';
+});
+
+console.log(result);
+// ["Tere", "Toño"]
+
+var result = some([2, 3 ,5], function(item) {
+    return item !== 2;
+});
+
+console.log(result);
+// true
+                    </code></pre>
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+
+                        </code></pre>
+                    
+                
+
+                
+                    <h2>Patrón módulo</h2>
+
+                    <pre><code style="font-size:18px;margin-top:20px">
+var Counter = (function() {
+  var privateCounter = 0;
+
+  function changeBy(val) {
+    privateCounter += val;
+  }
+
+  return {
+    increment: function() {
+      changeBy(1);
+    },
+    decrement: function() {
+      changeBy(-1);
+    },
+    value: function() {
+      console.log(privateCounter);
+    }
+  }
+})();
+
+Counter.value(); // 0
+Counter.increment();
+Counter.increment();
+Counter.value(); // 2
+Counter.decrement();
+Counter.value(); // 1
+
+//explicar con un object, o pasando una función directamente (return obj / return { increment: increment })
+//explicar sin IIFE para hacer 'clases'
+//ejemplo <a href="https://github.com/PIWEEK/dwarven-tavern/blob/master/client/js/dwarf.js" target="_blank">https://github.com/PIWEEK/<wbr>dwarven-tavern/blob/master/<wbr>client/js/dwarf.js</a>
+//ES6
+                    </code></pre>
+                
+
+                
+                    <h2>Ejercicio 5</h2>
+
+                    <pre><code style="font-size:18px;margin-top:20px">
+List.add(1);
+List.add(3); //list.push(val);
+List.print(); //[1, 3]
+List.find(1); // Index: 0 // list.indexOf(3);
+List.find(7); // Not found
+List.remove(0); //list.splice(valPosition, 1);
+List.removeItem(3);
+List.add(5);
+List.reset();
+List.print(); // []
+                    </code></pre>
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+var List = (function() {
+    var list = [];
+
+    function find(val) {
+        return list.indexOf(val);
+    }
+
+    return {
+        add: function(val) {
+            list.push(val);
+        },
+        remove: function(val) {
+            list.splice(val, 1);
+        },
+        print: function() {
+            console.log(list);
+        },
+        reset: function() {
+            list = [];
+        },
+        find: function(val) {
+            var result = find(val);
+
+            if (result === -1) {
+                console.log("Not found");
+            } else {
+                console.log("Index " + result);
+            }
+        },
+        removeItem: function(val) {
+            var result = find(val);
+
+            list.splice(result, 1);
+        }
+    }
+}());
+                        </code></pre>
+                    
+                
+
+                
+                    <pre><code style="font-size:18px;margin-top:20px">
+$('#example').find('p').<wbr>fadeOut().remove();
+
+calculator(2).add(4).sub(1).<wbr>add(2).print(); //7
+                    </code></pre>
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+
+var calculator = function(init) {
+      var currentValue = init;
+
+      var obj = {
+           add: function (val) {
+                currentValue += val;
+
+                return obj;
+           },
+           sub: function (val) {
+                currentValue -= val;
+
+                return obj;
+           },
+           print: function() {
+                console.log(currentValue);
+           }
+      }
+
+      return obj;
+};
+                        </code></pre>
+                    
+                
+        </div>
+
+        
+        
+
+        
+
+    </div>
+
+</div><div id="naptha_container0932014_0707"></div></body></html>

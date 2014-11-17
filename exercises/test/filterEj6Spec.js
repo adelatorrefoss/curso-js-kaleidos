@@ -19,7 +19,6 @@ describe('filter', function () {
                 return name !== 'Ramiro';
         });
 
-        console.log(result);
 
         expect(result).to.be.eql(["Tere", "Toño"]);
     })

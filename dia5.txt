@@ -1,0 +1,35 @@
+DIA 5
+=====
+
+
+Patrón Módulo
+-------------
+
+
+// singleton
+var Counter = (function() {
+
+    return {
+        increment: function() {
+            ...
+            }
+    }
+})();
+
+Counter.increment();
+
+// instancia
+var Counter = function() {
+
+    return {
+        increment: function() {
+            ...
+            }
+    }
+};
+
+var counter1 = Counter();
+counter1.increment();
+
+
+

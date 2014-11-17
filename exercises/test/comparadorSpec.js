@@ -12,7 +12,6 @@ describe('comparador', function () {
     })
 
     it('puedo comparar', function () {
-        console.log(comparador);
         var comparadorMarta = comparador('marta');
 
         var result1 = comparadorMarta('luis'); // luis tiene menos letras que marta

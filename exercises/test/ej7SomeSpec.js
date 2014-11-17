@@ -4,7 +4,7 @@
    ejer 7
 */
 
-describe.only('some', function () {
+describe('some', function () {
     beforeEach(function () {
 
     })
@@ -19,8 +19,6 @@ describe.only('some', function () {
                 return item !== 2;
         });
 
-        console.log(result);
-
         expect(result).to.be.equal(true);
     })
 
@@ -30,7 +28,6 @@ describe.only('some', function () {
                 return item !== 2;
         });
 
-        console.log(result);
 
         expect(result).to.be.equal(false);
     })
@@ -41,7 +38,6 @@ describe.only('some', function () {
                 return item !== 1;
         });
 
-        console.log(result);
 
         expect(result).to.be.equal(true);
     })

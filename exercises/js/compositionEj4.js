@@ -17,7 +17,6 @@ function CalculatorEj4(initial) {
             var sum = initialValue;
 
             for (var i = 0; i < operations.length; i++) {
-                console.log(">>>>" + sum);
                 sum = operations[i](sum, operands[i]);
             }
 
