@@ -1,0 +1,46 @@
+Day Dec 01
+==========
+
+
+// Fijate en this
+
+var jane = {
+    name = 'jane';
+    function describe() {
+        println "Person name: " + this.name;
+    }
+}
+
+jane.name
+jane.lastName
+
+jane['un parametro'] = "un parametro"
+
+
+// Sobreescribiendo this
+
+var translate = {
+    spanish: 'Hola',
+    english: 'Hi'
+}
+
+function hello(name1, name2) {
+    console.log(this.spanish)
+}
+
+
+// apply
+hello.apply(translate, ['Juan', 'Pedro'])
+
+// call
+hello.call(translate, 'Juan', 'Pedro')
+
+// bind
+var hello2 = hello.bind(translate);
+var hello3 = hello.bind(translate, 'Juan');
+
+hello2('Juan','Pedro');
+hello3('Pedro');
+
+
+
