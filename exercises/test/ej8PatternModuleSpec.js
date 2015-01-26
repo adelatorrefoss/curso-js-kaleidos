@@ -4,7 +4,7 @@
    ejer 8
 */
 
-describe.only('pattern', function () {
+describe('pattern', function () {
     beforeEach(function () {
     })
 

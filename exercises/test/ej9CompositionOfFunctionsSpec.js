@@ -4,7 +4,7 @@
    ejer 9
 */
 
-describe.only('functionsComposition', function () {
+describe('functionsComposition', function () {
     beforeEach(function () {
     })
 
