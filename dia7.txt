@@ -1,0 +1,13 @@
+CLASES
+======
+
+Pitfall de this
+---------------
+
+
+hello.apply(translate, ['pepe', 'juan'])
+(suena como array)
+
+hello.call(translate, 'pepe', 'juan')
+
+

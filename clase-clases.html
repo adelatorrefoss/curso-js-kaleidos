@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0252)https://mail-attachment.googleusercontent.com/attachment/u/1/?ui=2&ik=962786b10a&view=att&th=14b15c7cfc4176d3&attid=0.1&disp=inline&realattid=f_i599u5us0&safe=1&zw&saduie=AG9B_P8Dy7eH_D3orgNjPubJh3n0&sadet=1421999883149&sads=Ecz4tUZVjD9TGpdOKXCYOklHRW4 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>
+
+
+    
+        
+
+        
+
+        
+        
+
+        
+        
+
+        
+
+        
+        
+
+        
+        
+
+        
+        
+
+        
+    
+
+    <div>
+
+        <div>
+
+            
+            <div>
+                
+                    <h1>Objects and Inheritance</h1>
+                
+                
+                    <h2>Single Objects</h2>
+                
+                
+                    <pre><code style="font-size:18px;margin-top:20px">
+var jane = {
+    name: 'Jane',
+    describe: function () {
+        return 'Person named ' + <a href="http://this.name/" target="_blank">this.name</a>;
+    },
+};
+
+console.log(<a href="http://jane.name/" target="_blank">jane.name</a>);
+jane.describe();
+
+jane.lastName = 'xxx';
+
+delete jane.lastName;
+
+console.log(jane['name']);
+jane['puedo poner lo que quiera'] = 'ey';
+
+var describe = jade.describe;
+describe(); //Person named
+                    </code></pre>
+                
+                
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+function test() {
+    console.log(this === window); // true
+}
+
+test();
+                        </code></pre>
+                    
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+function test() {
+    "use strict";
+
+    console.log(this === undefined); // true
+}
+
+test();
+                        </code></pre>
+                    
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+function test() {
+     console.log(this === window); // false
+}
+
+var test1 = new test();
+                        </code></pre>
+                    
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+var test = {
+    method: function () {
+        console.log(this === test); // true
+    }
+}
+
+test.method();
+                        </code></pre>
+                    
+                
+                
+                    
+                        <h1>this pitfalls</h1>
+                    
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+function Point(x, y) {
+    this.x = x;
+    this.y = y;
+}
+
+var p = Point(7, 5);
+console.log (p.x);
+                        </code></pre>
+                        
+                            falta el new, se puede resolver con un "use strict"
+                        
+                    
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+var myApp = function(){
+    var name = "World"
+
+    var sayHello = function(){
+        console.log( 'Hello, ' + <a href="http://this.name/" target="_blank">this.name</a> );
+    };
+
+    sayHello();
+};
+
+myApp();
+                        </code></pre>
+                    
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+var counter = {
+    count: 0,
+    inc: function () {
+        this.count++;
+    }
+}
+
+var func = counter.inc;
+func();
+
+counter.count // 0
+                        </code>
+                    
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+var Person = {
+    name: 'Pepe',
+    friends: ['Dani', 'Ramiro', 'Tere'],
+    loop: function () {
+        this.friends.forEach(function (friend) {
+            console.log(<a href="http://this.name/" target="_blank">this.name</a>+' knows '+friend);
+         });
+    }
+}
+                        </code>
+                    
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+var Person = {
+    name: 'Pepe',
+    friends: ['Dani', 'Ramiro', 'Tere'],
+    loop: function () {
+        var that = this;
+        this.friends.forEach(function (friend) {
+            console.log(<a href="http://that.name/" target="_blank">that.name</a>+' knows '+friend);
+         });
+    }
+}
+                        </code>
+                    
+                
+                
+                    
+                        <h2>Sobreescribiendo el valor de this</h2>
+                    
+                    
+                        <h2>apply</h2>
+
+                        <pre><code style="font-size:18px;margin-top:20px">
+var translate = {
+    spanish: 'Hola',
+    english: 'Hi'
+}
+
+function hello(name1, name2) {
+    console.log( this.spanish + ' ' + name1 );
+    console.log( this.english + ' ' + name1 );
+
+    console.log( this.spanish + ' ' + name2 );
+    console.log( this.english + ' ' + name2 );
+}
+
+hello.apply(translate, ['Juan', 'Pedro']);
+                        </code></pre>
+                    
+                    
+                        <h2>call</h2>
+
+                        <pre><code style="font-size:18px;margin-top:20px">
+var translate = {
+    spanish: 'Hola',
+    english: 'Hi'
+}
+
+function hello(name1, name2) {
+    console.log( this.spanish + ' ' + name1 );
+    console.log( this.english + ' ' + name1 );
+
+    console.log( this.spanish + ' ' + name2 );
+    console.log( this.english + ' ' + name2 );
+}
+
+hello.call(translate, 'Juan', 'Pedro');
+                        </code></pre>
+                    
+
+                    
+                        <h2>bind</h2>
+
+                        <pre><code style="font-size:18px;margin-top:20px">
+var translate = {
+    spanish: 'Hola',
+    english: 'Hi'
+}
+
+function hello(name1, name2) {
+    console.log( this.spanish + ' ' + name1 );
+    console.log( this.english + ' ' + name1 );
+
+    console.log( this.spanish + ' ' + name2 );
+    console.log( this.english + ' ' + name2 );
+}
+
+var hello2 = hello.bind(translate, 'Juan);
+
+hello2('Juan', 'Pedro');
+
+
+var helloJuanAndFriend = hello.bind(translate, 'Juan');
+
+/*
+function helloJuanAndFriend(name2) {
+    return hello('Juan', name2);
+}
+*/
+
+helloJuanAndFriend('Pedro');
+helloJuanAndFriend('Luis');
+
+                        </code></pre>
+                    
+                
+
+                
+                    <pre><code style="font-size:18px;margin-top:20px">
+var person = {
+    name: 'Pepa',
+    age: 34,
+    sayHi: function() {
+        return "Hi!, I'm' " + <a href="http://this.name/" target="_blank">this.name</a>;
+    },
+    sayAge: function() {
+       return "I am " + this.age + " years old";
+   }
+};
+
+
+var myPuppet = puppet(person);
+
+var sayHi = myPuppet('sayHi');
+sayHi();
+
+var sayAge = myPuppet('sayAge');
+sayAge();
+
+
+                    </code></pre>
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+function puppet(obj) {
+    return function(fn) {
+         return person[fn].bind(person);
+    }
+}
+                        </code></pre>
+                    
+                
+
+               
+                    <pre><code style="font-size:18px;margin-top:20px">
+var powers = {
+    readOwnMine: function() {
+        return <a href="http://this.name/" target="_blank">this.name</a> + ' puede leer su propia mente';
+    },
+    invisible: function() {
+        return <a href="http://this.name/" target="_blank">this.name</a> + ' puede volverse invisible cuando nadie mira';
+    },
+    superEar: function () {
+        return <a href="http://this.name/" target="_blank">this.name</a> + ' puede escuchar a grandes distancias cuando duerme';
+    }
+};
+
+var ramiro = {
+    name: 'ramiro'
+}
+
+var superRamiro = Hero(ramiro, {'readMine': powers.readOwnMine, 'invisible': powers.invisible});
+
+
+superRamiro.power('invisible')<wbr>;
+superRamiro.power('readMine');
+
+                    </code></pre>
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+function Hero(person, powers) {
+    return {
+        power: function (powerName) {
+            return powers[powerName].call(person)<wbr>;
+        }
+    }
+}
+                        </code></pre>
+                    
+                
+
+
+               
+                    <pre><code style="font-size:18px;margin-top:20px">
+function add() {
+   return this.num1 + this.num2;
+}
+
+function sub() {
+   return this.num1 - this.num2;
+}
+
+var calculator = Calculator(add, sub);
+
+calculator.set({
+    'num1': 5,
+    'num2': 2,
+});
+
+calculator.result(); // [7, 3];
+                    </code></pre>
+
+                    
+                        <pre><code style="font-size:18px;margin-top:20px">
+function Calculator() {
+    var op = arguments;
+    var obj = {};
+
+    return {
+        set: function(nums) {
+            obj = nums;
+        },
+        result: function() {
+            var list = [];
+
+            for(var i = 0; i &lt; op.length; i++) {
+                list.push(op[i].call(obj));
+            }
+
+            return list;
+        }
+    }
+}
+                        </code></pre>
+                    
+                
+
+
+
+                
+                    <h2>Inheritance</h2>
+                
+                
+var PersonProto = {
+    describe: function () {
+        return 'Person named '+<a href="http://this.name/" target="_blank">this.name</a>;
+    }
+};
+
+var jane = {
+    [[Prototype]]: PersonProto,
+    name: 'Jane'
+};
+
+var tarzan = {
+    [[Prototype]]: PersonProto,
+    name: 'Tarzan'
+};
+                
+            </pre></pre></pre></div>
+        </div>
+
+        
+        
+
+        
+
+    </div>
+
+</body></html>
